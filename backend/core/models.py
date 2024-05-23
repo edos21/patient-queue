@@ -42,11 +42,3 @@ class PatientStatus(models.Model):
 
     def __str__(self):
         return f"{self.patient.full_name} at {self.station.name}"
-
-    @classmethod
-    def is_patient_active_in_station(cls, patient, station):
-        return cls.objects.filter(patient=patient, station=station, exit_date__isnull=True).exists()
-
-    @classmethod
-    def is_any_patient_active_in_station(cls, station):
-        return cls.objects.filter(station=station, exit_date__isnull=True).exists()
