@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllPatients } from "../api/patients.api";
+import { PatientCard } from "./PatientCard";
 
 export function PatientsList() {
     const [patients, setPatients] = useState([]);
@@ -11,11 +12,10 @@ export function PatientsList() {
         loadPatients();
     }, [])
     return (
-        <div>
+        <div className="row">
             {patients.map(patient => (
-                <div key={patient.id}>
-                    <p>{patient.full_name}</p>
-                    <p>{patient.is_active ? "si" : "no"}</p>
+                <div key={patient.id} className="col-md-4 mb-4">
+                    <PatientCard patient={patient} />
                 </div>
             ))}
         </div>

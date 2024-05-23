@@ -5,3 +5,4 @@ const PatientsApi = axios.create({
 });
 
 export const getAllPatients = () => PatientsApi.get("/");
+export const createPatient = (patient) => PatientsApi.post("/", patient);
