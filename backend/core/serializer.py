@@ -4,12 +4,12 @@ from .models import Patient, Station, PatientStatus
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
-        fields = ['id', 'full_name', 'birth_date', 'phone_number', 'is_active']
+        fields = ['id', 'full_name', 'birth_date', 'phone_number', 'is_active', 'current_station']
 
 class StationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Station
-        fields = ['id', 'name', 'order']
+        fields = ['id', 'name', 'order', 'current_patient']
 
 class PatientStatusSerializer(serializers.ModelSerializer):
     patient = PatientSerializer(read_only=True)
